@@ -12,19 +12,31 @@ export class App extends Component {
   }
 
   render() {
-
+    console.log(this.state);
     return <Container>
               <Title>Please leave feedback</Title>
               <ul>
                   {Object.keys(this.state).map(feedbackName=> 
                   <FeedbackButton
-                      key={feedbackName.valueOf()}
+                      key={feedbackName.valueOf().toUpperCase()}
                       buttonName={feedbackName.valueOf().toUpperCase()}/>)}
               </ul>
               
               <Title>Statistics</Title>
               <ul>
-                <li>Good:0</li>
+                {Object.keys(this.state).map(stat=>
+                   <StatisticsList
+                   key={stat.valueOf().toLowerCase()}
+                   statName={stat.valueOf()}
+                   value={stat}
+                 />)}
+                 {/* {this.state.map(stat=>
+                   <StatisticsList
+                   key={Object.keys(stat).valueOf().toLowerCase()}
+                   statName={Object.keys(stat).valueOf()}
+                   value={stat}
+                 />)} */}
+               
               </ul>
           </Container>;
   }
@@ -32,4 +44,9 @@ export class App extends Component {
 
 FeedbackButton.propTypes={
   buttonName:PropTypes.string
+}
+
+StatisticsList.propTypes={
+  statName:PropTypes.string,
+  value:PropTypes.number
 }
