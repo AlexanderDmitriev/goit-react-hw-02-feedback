@@ -11,7 +11,7 @@ export class App extends Component {
   render() {
     
     return <div>
-          <p>Please leave feedback</p>
+          <Title>Please leave feedback</Title>
           <button type="button">GOOD</button>
           <p>Statistics</p>
           <ul>
