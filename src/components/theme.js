@@ -1,6 +1,6 @@
 export const theme = {
     colors:{
-        backgroundAvatar:"#ffa",
+        textColor:"#212121",
     },
     spacing:value => `${4 * value}px`,
 };
