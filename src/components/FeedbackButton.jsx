@@ -1,7 +1,10 @@
+import {ContentList} from './App.styled';
+import {CustomButton} from './FeedbackButton.styled';
+
 export const FeedbackButton = ({buttonName}) => {
-    return <li>
-        <button type="button">
+    return <ContentList>
+        <CustomButton type="button">
              {buttonName}
-        </button>
-    </li>
+        </CustomButton>
+    </ContentList>
 }

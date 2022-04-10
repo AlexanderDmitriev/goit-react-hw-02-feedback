@@ -19,3 +19,13 @@ export const Container =  styled.div`
     padding:${theme.spacing(3)};
 `;
 
+export const ContentList= styled.li`
+    font-family: Raleway, sans-serif;
+    font-weight: 500;
+    font-size: ${theme.spacing(4)};
+    color: ${theme.colors.textColor};
+    padding-top: ${theme.spacing(1)};
+    ::first-letter{
+        text-transform:uppercase;
+    }
+`;

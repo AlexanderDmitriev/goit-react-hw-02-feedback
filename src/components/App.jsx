@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Title, Container } from "./App.styled";
+import PropTypes from 'prop-types';
+import { Title, Container, ContentList } from "./App.styled";
 import { FeedbackButton } from "./FeedbackButton";
 import { StatisticsList } from "./StatisticsList";
-import PropTypes from 'prop-types';
 
 export class App extends Component {
   state = {
@@ -12,7 +12,8 @@ export class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    const totalFeedbacks=Object.values(this.state).reduce((sum,count)=>{return sum+count},0);
+    const goodFeedback=this.state.good>0? this.state.good/totalFeedbacks:0;
     return <Container>
               <Title>Please leave feedback</Title>
               <ul>
@@ -24,19 +25,15 @@ export class App extends Component {
               
               <Title>Statistics</Title>
               <ul>
-                {Object.keys(this.state).map(stat=>
-                   <StatisticsList
-                   key={stat.valueOf().toLowerCase()}
-                   statName={stat.valueOf()}
-                   value={stat}
-                 />)}
-                 {/* {this.state.map(stat=>
-                   <StatisticsList
-                   key={Object.keys(stat).valueOf().toLowerCase()}
-                   statName={Object.keys(stat).valueOf()}
-                   value={stat}
-                 />)} */}
-               
+                  <StatisticsList options={this.state} />
+              </ul>
+              <ul>
+                <ContentList>
+                  <p>Total: {totalFeedbacks}</p>
+                </ContentList>
+                <ContentList>
+                  <p>Positive feedback: {goodFeedback*100} %</p>
+                </ContentList>
               </ul>
           </Container>;
   }
@@ -47,6 +44,5 @@ FeedbackButton.propTypes={
 }
 
 StatisticsList.propTypes={
-  statName:PropTypes.string,
-  value:PropTypes.number
+  options:PropTypes.object,
 }
