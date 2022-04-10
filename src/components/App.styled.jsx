@@ -35,3 +35,10 @@ export const StatisticSection =  styled.ul`
     list-style: none;
     padding-top: ${theme.spacing(2)};
 `;
+
+export const ButtonSection =  styled.ul`
+    list-style: none;
+    padding-top: ${theme.spacing(2)};
+    display: flex;
+    justify-content: center;
+`;

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import { Title, Container } from "./App.styled";
-import { FeedbackButton } from "./FeedbackButton";
+import { Container } from "./App.styled";
 import {Statistics} from './Statistics ';
+import {FeedbackOptions} from './FeedbackOptions ';
+import {Section} from './Section ';
 
 export class App extends Component {
   state = {
@@ -31,29 +32,29 @@ export class App extends Component {
   render() {
   
     return <Container>
-              <Title>Please leave feedback</Title>
-              <ul>
-                  {Object.keys(this.state).map(feedbackName=> 
-                  <FeedbackButton
-                      key={feedbackName.valueOf().toUpperCase()}
-                      buttonName={feedbackName.valueOf().toUpperCase()}
-                      onIncrement={this.handleAddFeedback}
-                      />
-                      )}
-              </ul>
-              <Statistics
-                good={this.state.good}
-                neutral={this.state.neutral}
-                bad={this.state.bad}
-                total={this.countTotalFeedback()}
-                positivePercentage={this.countPositiveFeedbackPercentage()}
-              />
+              <Section title="Please leave feedback">
+                <FeedbackOptions
+                  options={this.state}
+                  onLeaveFeedback={this.handleAddFeedback}
+                />
+              </Section>
+              <Section title="Statistics">
+                {this.countTotalFeedback()>0?(<Statistics
+                    good={this.state.good}
+                    neutral={this.state.neutral}
+                    bad={this.state.bad}
+                    total={this.countTotalFeedback()}
+                    positivePercentage={this.countPositiveFeedbackPercentage()}
+                  />):(<p>There is no feedback</p>)}
+                  
+              </Section>
+              
           </Container>;
   }
 }
 
-FeedbackButton.propTypes={
-  buttonName:PropTypes.string
+Section.propTypes={
+  title:PropTypes.string
 }
 
 
