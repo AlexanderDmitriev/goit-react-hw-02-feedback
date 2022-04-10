@@ -1,10 +1,9 @@
 import {ContentList} from './App.styled';
 
-export const StatisticsList = ({options}) => {
-    const res=Object.entries(options);
-    return <>
-        {res.map(value=>(         
-            <ContentList key={value}>{value[0]} : {value[1]}</ContentList>
-        )) }      
+export const StatisticsList = ({good,neutral,bad}) => {
+    return <>        
+            <ContentList key="good">"Good" : {good}</ContentList>
+            <ContentList key="neutral">"neutral" : {neutral}</ContentList>
+            <ContentList key="bad">"bad" : {bad}</ContentList>
     </>
 }

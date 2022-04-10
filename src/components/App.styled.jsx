@@ -8,6 +8,7 @@ export const Title =  styled.h2`
     line-height: 1.2;
     text-align: center;
     color: ${theme.colors.textColor};
+    padding-top: ${theme.spacing(2)};
 `;
 
 export const Container =  styled.div`
@@ -28,4 +29,9 @@ export const ContentList= styled.li`
     ::first-letter{
         text-transform:uppercase;
     }
+`;
+
+export const StatisticSection =  styled.ul`
+    list-style: none;
+    padding-top: ${theme.spacing(2)};
 `;
