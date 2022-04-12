@@ -21,6 +21,13 @@ export class App extends Component {
     });
   };
 
+  handleAddFeedback2 = (buttonName) => {
+    console.log(this);
+      this.setState(prevState => ({
+        [buttonName]: prevState[buttonName]+1,
+      }));
+  };
+
   countTotalFeedback = () => {
     return Object.values(this.state).reduce((sum,count)=>{return sum+count},0);
   };
@@ -35,7 +42,7 @@ export class App extends Component {
               <Section title="Please leave feedback">
                 <FeedbackOptions
                   options={this.state}
-                  onLeaveFeedback={this.handleAddFeedback}
+                  onLeaveFeedback={this.handleAddFeedback2}
                 />
               </Section>
               <Section title="Statistics">

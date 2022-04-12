@@ -8,9 +8,9 @@ export const FeedbackOptions  = ({options, onLeaveFeedback}) => {
               <ButtonSection>
                   {Object.keys(options).map(feedbackName=> 
                   <FeedbackButton
-                      key={feedbackName.valueOf().toUpperCase()}
+                      key={feedbackName.valueOf().toUpperCase()} 
                       buttonName={feedbackName.valueOf().toUpperCase()}
-                      onIncrement={onLeaveFeedback}
+                      onIncrement={()=>{onLeaveFeedback(feedbackName.valueOf())}}
                       />
                       )}
               </ButtonSection>
